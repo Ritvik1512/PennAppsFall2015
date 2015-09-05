@@ -73,7 +73,7 @@ app.get('/profile', function(request, response) {
 });
 
 app.get('/login', function(request, response) {
-  response.render('login.html');
+  response.render('login.html', { message: request.flash('loginMessage')});
 });
 
 app.post('/login', passport.authenticate('local-login', {
@@ -83,7 +83,7 @@ app.post('/login', passport.authenticate('local-login', {
 }));
 
 app.get('/register', function(request, response) {
-  response.render('register.html');
+  response.render('register.html', { message: request.flash('signupMessage')});
 })
 
 app.post('/register', passport.authenticate('local-signup', {
