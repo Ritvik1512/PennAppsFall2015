@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SoundHub</title>
+    <link href='/static/css/styles.css' rel='stylesheet' />
+    <link href='/bower_components/font-awesome/css/font-awesome.min.css' rel='stylesheet' />
+    <link href='/bower_components/normalize.css/normalize.css' rel='stylesheet' />
+    <link href='/bower_components/bootstrap/dist/css/bootstrap.min.css' rel='stylesheet' />
+    <script src='/bower_components/jquery/dist/jquery.min.js'></script>
+    <script src='/bower_components/bootstrap/dist/js/bootstrap.min.js'></script>
+    {% block head %}
+    {% endblock %}
+  </head>
+  <body>
+    <nav class ="navbar navbar-default">
+      <div class="container-fluid">
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+      <a class="navbar-brand" href="/">Sound Hub</a>
+        <li><a href="/register">Register</a></li>
+        <li><a href="/login">Login</a></li>
+        <li><a href="/explore">Explore</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">My Profile <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">My Sounds</a></li>
+            <li><a href="#">My Forks</a></li>
+            <li><a href="#">My Friends</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Settings</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    </div>
+    </nav>
+    {% block content %}
+    {% endblock %}
+    {% block scripts %}
+    {% endblock %}
+    </body>
+      </html>
+
