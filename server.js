@@ -38,7 +38,7 @@ var app = express();
 var configDB = require('./config/database')
 
 //CONFIGURATION
-mongoose.connect("localhost:27017/pennapps"); // connect to our database
+mongoose.connect(configDB.url); // connect to our database
 app.engine('html', swig.renderFile);
 
 app.set('port', PORT_NUMBER);
