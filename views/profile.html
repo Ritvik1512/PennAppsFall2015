@@ -2,19 +2,35 @@
 
 {% block content %}
 
+
 <div style="margin: 0 auto; clear: none" class="container">
 <i style="font-size: 15em" class="glyphicon glyphicon-user"></i> 
 <br />
 <h1>Profile</h1>
-<br />
-<br />
-<br />
-<br />
 <div class="row">
+<a href="#" class="connect"><button type="button" class="connect btn btn-large btn-warning">Connect to SoundCloud</button><a>
 </div>
 </div>
 
 {% endblock %}
 
 {% block scripts %}
+<script src="//connect.soundcloud.com/sdk-2.0.0.js"></script>
+<script>
+SC.initialize({
+  client_id: '863d883be4445933a4421636c8ee3533',
+  redirect_uri: '/sc'
+});
+
+$(document).ready(function() {
+  $('a.connect').click(function(e) {
+    e.preventDefault();
+    SC.connect(function() {
+  SC.get('/me', function(me) {
+    alert('Hello, ' + me.username);
+  });
+});
+  });
+});
+</script>
 {% endblock %}

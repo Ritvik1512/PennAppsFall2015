@@ -24,6 +24,7 @@ var LocalStrategy   = require('passport-local').Strategy;
 
 // SOUNDCLOUD NODE MODULE
 var SC = require('soundclouder');
+
 // LINKING SECRET FILES FOR SOUNDCLOUD AUTH
 var SCAuthInfo = require('./config/soundcloud');
 
@@ -91,6 +92,10 @@ app.post('/register', passport.authenticate('local-signup', {
         failureRedirect : '/register', // redirect back to the signup page if there is an error
         failureFlash : true // allow flash messages
 }));
+
+app.get('/sc', isLoggedIn, function(request, response) {
+  response.render('sc.html');
+})
 
 app.get('/logout', isLoggedIn, function(request, response) {
   request.logout();

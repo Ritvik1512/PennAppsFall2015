@@ -1,0 +1,26 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+
+<h1> Sound Cloud Connection Page </h1>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="//connect.soundcloud.com/sdk-2.0.0.js"></script>
+    <script>
+      SC.initialize({
+  client_id: '863d883be4445933a4421636c8ee3533',
+  redirect_uri: '/sc'
+});
+
+$(document).ready(function() {
+SC.get('/me/tracks', function(track) {
+  SC.oEmbed(track.permalink_url, { auto_play: false }, function(oEmbed) {
+    console.log('oEmbed response: ' + oEmbed);
+  });
+});
+});
+</script>
+{% endblock %}
