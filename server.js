@@ -65,11 +65,11 @@ app.use(flash());
 
 //ROUTING
 app.get('/', function(request, response) {
-  response.render('index.html');
+  response.render('index.html', {user: request.user});
 });
 
-app.get('/profile', function(request, response) {
-  response.render('profile.html');
+app.get('/profile', isLoggedIn, function(request, response) {
+  response.render('profile.html', {user: request.user});
 });
 
 app.get('/login', function(request, response) {
@@ -91,6 +91,22 @@ app.post('/register', passport.authenticate('local-signup', {
         failureRedirect : '/register', // redirect back to the signup page if there is an error
         failureFlash : true // allow flash messages
 }));
+
+app.get('/logout', isLoggedIn, function(request, response) {
+  request.logout();
+  response.redirect('/');
+})
+
+//METHODS
+function isLoggedIn(request, response, next) {
+
+    // if user is authenticated in the session, carry on
+    if (request.isAuthenticated())
+        return next();
+
+    // if they aren't redirect them to the home page
+    response.render('register.html', { message: "You are not authorized to access that page." });
+}
 
 //SERVER LAUNCH
 var server = require('http').Server(app);
